@@ -1,5 +1,11 @@
 const colors = require('colors');
-const { startMenu, pausa, leerInput, borrarTarea } = require('./helpers/inquirer');
+const {
+    startMenu,
+    pausa,
+    leerInput,
+    borrarTarea,
+    confirmacionBorrado,
+} = require('./helpers/inquirer');
 
 const Tareas = require('./clases/tareas');
 const { grabarArchivo, existeArchivo } = require('./helpers/ManejoDB');
@@ -38,8 +44,12 @@ const main = async () => {
 
             case '6':
                 let tareaSeleccionada = await borrarTarea(tareas.getListadoArr);
-        }
+                let index = tareas.listado.findIndex((tarea) => tarea.id === tareaSeleccionada);
+                const respuesta = await confirmacionBorrado();
+                if (respuesta) tareas.listado.splice(index, 1);
 
+                break;
+        }
         grabarArchivo(tareas.getListadoArr);
         await pausa();
     } while (opt !== '0');

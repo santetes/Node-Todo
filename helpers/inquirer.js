@@ -99,9 +99,19 @@ const borrarTarea = async (tareasArr) => {
     return seleccion;
 };
 
+const confirmacionBorrado = async () => {
+    const respuesta = await inquirer.prompt({
+        type: 'confirm',
+        name: 'respuesta',
+        message: 'Seguro que desea borrar la tarea?',
+    });
+    return respuesta;
+};
+
 module.exports = {
     startMenu,
     pausa,
     leerInput,
     borrarTarea,
+    confirmacionBorrado,
 };
