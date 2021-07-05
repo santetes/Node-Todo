@@ -99,11 +99,11 @@ const borrarTarea = async (tareasArr) => {
     return seleccion;
 };
 
-const confirmacionBorrado = async () => {
+const confirmacionBorrado = async (message) => {
     const respuesta = await inquirer.prompt({
         type: 'confirm',
         name: 'respuesta',
-        message: 'Seguro que desea borrar la tarea?',
+        message,
     });
     return respuesta;
 };

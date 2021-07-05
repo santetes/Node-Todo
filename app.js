@@ -45,7 +45,9 @@ const main = async () => {
             case '6':
                 let tareaSeleccionada = await borrarTarea(tareas.getListadoArr);
                 let index = tareas.listado.findIndex((tarea) => tarea.id === tareaSeleccionada);
-                const respuesta = await confirmacionBorrado();
+                const respuesta = await confirmacionBorrado(
+                    'Seguro que quiere borrar la tarea selecionada??'
+                );
                 if (respuesta) tareas.listado.splice(index, 1);
 
                 break;
