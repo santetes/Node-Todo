@@ -79,7 +79,7 @@ const leerInput = async (message) => {
 
 const listadoBorrarTarea = async (tareasArr) => {
     let choices = [];
-
+    //Aqui para añadir las posibles selecciones al array utilizo el mento foreach y push
     tareasArr.forEach((tarea) => {
         choices.push({
             value: tarea.id,
@@ -112,10 +112,33 @@ const confirmacionBorrado = async (message) => {
     return respuesta;
 };
 
+const listadoCompletarTarea = async (tareasArr) => {
+    //aqui para añadir las posibles opcines utilizo el metodo map
+    let choices = tareasArr.map((tarea) => {
+        return {
+            value: tarea.id,
+            name: tarea.desc,
+            checked: true,
+        };
+    });
+
+    const opciones = {
+        type: 'checkbox',
+        name: 'tareas',
+        message: 'selecciona la tareas a completar/pendientes',
+        choices,
+    };
+
+    const { tareas } = await inquirer.prompt(opciones);
+
+    return tareas;
+};
+
 module.exports = {
     startMenu,
     pausa,
     leerInput,
     listadoBorrarTarea,
     confirmacionBorrado,
+    listadoCompletarTarea,
 };

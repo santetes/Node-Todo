@@ -5,6 +5,7 @@ const {
     leerInput,
     listadoBorrarTarea,
     confirmacionBorrado,
+    listadoCompletarTarea,
 } = require('./helpers/inquirer');
 
 const Tareas = require('./clases/tareas');
@@ -17,10 +18,10 @@ if (data) {
     tareas.rellena_listado(data);
     tareas.listado = tareas.getListadoArr;
 }
-
 const main = async () => {
     do {
         console.clear();
+
         opt = await startMenu();
 
         switch (opt) {
@@ -40,6 +41,11 @@ const main = async () => {
 
             case '4':
                 tareas.listarPendientes_Completadas(false);
+                break;
+
+            case '5':
+                let tareasSeleccionadas = await listadoCompletarTarea(tareas.listado);
+                console.log(tareasSeleccionadas);
                 break;
 
             case '6':
