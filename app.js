@@ -45,7 +45,7 @@ const main = async () => {
 
             case '5':
                 let tareasSeleccionadas = await listadoCompletarTarea(tareas.listado);
-                console.log(tareasSeleccionadas);
+                tareas.rellenaCompletadas(tareasSeleccionadas);
                 break;
 
             case '6':

@@ -74,6 +74,22 @@ class Tareas {
         delete this._listado[tarea.tarea];
         this.listado = [];
     }
+
+    rellenaCompletadas(arrayIds = []) {
+        const hoy = new Date(Date.now());
+        let fecha = hoy.toDateString();
+
+        let arrayKeys = Object.keys(this._listado);
+        arrayKeys.forEach((key) => {
+            this._listado[key].completadoEn = null;
+        });
+
+        arrayIds.forEach((id) => {
+            this._listado[id].completadoEn = fecha;
+        });
+        this.listado = [];
+        this.getListadoArr;
+    }
 }
 
 module.exports = Tareas;
