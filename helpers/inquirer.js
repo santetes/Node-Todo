@@ -100,7 +100,7 @@ const listadoBorrarTarea = async (tareasArr) => {
 };
 
 const confirmacionBorrado = async (message) => {
-    const respuesta = await inquirer.prompt({
+    const { respuesta } = await inquirer.prompt({
         type: 'confirm',
         name: 'respuesta',
         message,

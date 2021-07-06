@@ -49,7 +49,7 @@ const main = async () => {
                 );
                 if (respuesta) {
                     tareas.borrarTarea(tareaSeleccionada);
-                    console.log('La tarea seleccionada ha sido borrada');
+                    console.log(respuesta, 'La tarea seleccionada ha sido borrada');
                     tareas.getListadoArr;
                 }
 
