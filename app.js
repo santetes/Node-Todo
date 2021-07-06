@@ -44,12 +44,13 @@ const main = async () => {
 
             case '6':
                 let tareaSeleccionada = await listadoBorrarTarea(tareas.listado);
+                if (!tareaSeleccionada.tarea) break;
                 const respuesta = await confirmacionBorrado(
                     'Seguro que quiere borrar la tarea selecionada??'
                 );
                 if (respuesta) {
                     tareas.borrarTarea(tareaSeleccionada);
-                    console.log(respuesta, 'La tarea seleccionada ha sido borrada');
+                    console.log('La tarea seleccionada ha sido borrada');
                     tareas.getListadoArr;
                 }
 

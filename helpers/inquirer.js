@@ -86,6 +86,10 @@ const listadoBorrarTarea = async (tareasArr) => {
             name: tarea.desc,
         });
     });
+    choices.push({
+        value: false,
+        name: 'CANCELAR',
+    });
 
     const opciones = {
         type: 'list',
