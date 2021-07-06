@@ -3,7 +3,7 @@ const {
     startMenu,
     pausa,
     leerInput,
-    borrarTarea,
+    listadoBorrarTarea,
     confirmacionBorrado,
 } = require('./helpers/inquirer');
 
@@ -43,20 +43,21 @@ const main = async () => {
                 break;
 
             case '6':
-                let tareaSeleccionada = await borrarTarea(tareas.getListadoArr);
-                let index = tareas.listado.findIndex((tarea) => tarea.id === tareaSeleccionada);
+                let tareaSeleccionada = await listadoBorrarTarea(tareas.listado);
                 const respuesta = await confirmacionBorrado(
                     'Seguro que quiere borrar la tarea selecionada??'
                 );
-                if (respuesta) tareas.listado.splice(index, 1);
+                if (respuesta) {
+                    tareas.borrarTarea(tareaSeleccionada);
+                    console.log('La tarea seleccionada ha sido borrada');
+                    tareas.getListadoArr;
+                }
 
                 break;
         }
-        grabarArchivo(tareas.getListadoArr);
+        grabarArchivo(tareas.listado);
         await pausa();
     } while (opt !== '0');
 };
 
 main();
-
-//esto es una prueba que deberia estar solamente en refactorización

@@ -77,7 +77,7 @@ const leerInput = async (message) => {
     return desc;
 };
 
-const borrarTarea = async (tareasArr) => {
+const listadoBorrarTarea = async (tareasArr) => {
     let choices = [];
 
     tareasArr.forEach((tarea) => {
@@ -89,14 +89,14 @@ const borrarTarea = async (tareasArr) => {
 
     const opciones = {
         type: 'list',
-        name: 'seleccion',
+        name: 'tarea',
         message: 'selecciona la tarea a borrar',
         choices,
     };
 
-    const { seleccion } = await inquirer.prompt(opciones);
+    const tarea = await inquirer.prompt(opciones);
 
-    return seleccion;
+    return tarea;
 };
 
 const confirmacionBorrado = async (message) => {
@@ -112,6 +112,6 @@ module.exports = {
     startMenu,
     pausa,
     leerInput,
-    borrarTarea,
+    listadoBorrarTarea,
     confirmacionBorrado,
 };

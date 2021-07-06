@@ -10,7 +10,7 @@ class Tareas {
             const tarea = this._listado[key];
             this.listado.push(tarea);
         });
-        this._listado = {};
+
         return this.listado;
     }
 
@@ -22,6 +22,8 @@ class Tareas {
         const tarea = new Tarea(desc);
 
         this._listado[tarea.id] = tarea;
+        this.listado = [];
+        this.listado = this.getListadoArr;
     }
     rellena_listado(arrayData) {
         arrayData.forEach((tarea) => {
@@ -67,6 +69,10 @@ class Tareas {
         }
 
         console.log('');
+    }
+    borrarTarea(tarea) {
+        delete this._listado[tarea.tarea];
+        this.listado = [];
     }
 }
 
