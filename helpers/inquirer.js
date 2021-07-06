@@ -118,7 +118,7 @@ const listadoCompletarTarea = async (tareasArr) => {
         return {
             value: tarea.id,
             name: tarea.desc,
-            checked: true,
+            checked: tarea.completadoEn ? true : false,
         };
     });
 
